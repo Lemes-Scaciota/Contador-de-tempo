@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Tempo de Namoro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+    h1 {
+      color: #333;
+    }
+    .counter {
+      font-size: 24px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tempo de Namoro ❤️</h1>
+  <div class="counter" id="counter">
+    Carregando...
+  </div>
+
+  <script>
+    // Defina a data em que vocês começaram a namorar
+    const startDate = new Date("2022-01-01T00:00:00"); // Altere para a data de início do namoro
+
+    function updateCounter() {
+      const now = new Date();
+      const elapsedTime = now - startDate;
+
+      // Converter o tempo em dias, horas, minutos e segundos
+      const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+
+      // Atualizar o conteúdo do contador
+      const counterElement = document.getElementById("counter");
+      counterElement.textContent = `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+    }
+
+    // Atualizar o contador a cada segundo
+    setInterval(updateCounter, 1000);
+    updateCounter(); // Chamar imediatamente para não haver atraso inicial
+  </script>
+</body>
+</html>
